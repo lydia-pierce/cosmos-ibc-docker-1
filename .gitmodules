@@ -1,3 +1,6 @@
 [submodule "modular/leaderboard2"]
 	path = modular/leaderboard2
 	url = https://github.com/lydia-pierce/leaderboard2.git
+[submodule "modular/checkers"]
+	path = modular/checkers
+	url = https://github.com/lydia-pierce/checkers.git
