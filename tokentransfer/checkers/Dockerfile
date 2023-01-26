@@ -18,7 +18,7 @@ RUN apt-get install curl git
 RUN curl -L https://get.ignite.com/cli@v0.22.1! | bash
 
 # Clone checkers game repository(branch wager-denomination)
-RUN git clone -b wager-denomination https://github.com/cosmos/b9-checkers-academy-draft.git /home/checkers
+RUN git clone -b wager-denomination https://github.com/lydia-pierce/checkers.git /home/checkers
 
 # Copy Config.yml
 ARG configyml

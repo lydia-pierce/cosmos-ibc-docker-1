@@ -24,7 +24,7 @@ RUN go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@latest
 RUN go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
 
 # Copy local repository
-ADD b9-checkers-academy-draft /home/leaderboard
+ADD checkers /home/leaderboard
 
 # Install more dependencies
 RUN go get github.com/golangci/golangci-lint/cmd/golangci-lint
