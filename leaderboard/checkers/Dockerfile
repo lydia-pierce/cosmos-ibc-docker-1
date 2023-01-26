@@ -10,7 +10,7 @@
 FROM golang:1.18
 
 # Set working dir
-WORKDIR /home/leaderboard
+WORKDIR /home/leaderboard2
 
 # Install tools
 RUN apt-get install curl git
@@ -24,7 +24,7 @@ RUN go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@latest
 RUN go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
 
 # Copy local repository
-ADD checkers /home/leaderboard
+ADD checkers /home/leaderboard2
 
 # Install more dependencies
 RUN go get github.com/golangci/golangci-lint/cmd/golangci-lint
@@ -33,20 +33,20 @@ RUN git clone https://github.com/regen-network/cosmos-proto && cd cosmos-proto/p
 
 # Copy Config.yml
 ARG configyml
-COPY ${configyml} /home/leaderboard/config.yml
+COPY ${configyml} /home/leaderboard2/config.yml
 
 # Copy Tests
-COPY ./test.sh /home/leaderboard
+COPY ./test.sh /home/leaderboard2
 RUN chmod +x ./test.sh
 ARG testchain
-COPY ${testchain} /home/leaderboard/createandplaygame.sh
+COPY ${testchain} /home/leaderboard2/createandplaygame.sh
 RUN chmod +x ./createandplaygame.sh
 
 # copy entrypoint script
-COPY ./run-leaderboard.sh /home/leaderboard
+COPY ./run-leaderboard.sh /home/leaderboard2
 RUN chmod +x ./run-leaderboard.sh
 
-ENTRYPOINT ["/bin/bash", "-c", "/home/leaderboard/run-leaderboard.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "/home/leaderboard2/run-leaderboard.sh"]
 EXPOSE 26657 1317 4500
 
 # build with ./build-images.sh
